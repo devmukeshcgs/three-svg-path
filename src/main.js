@@ -13,32 +13,32 @@ scene.add(axesHelper);
 
 /////////////////
 // Camera
-// const camera = new THREE.PerspectiveCamera(
-//   10,
-//   window.innerWidth / window.innerHeight,
-//   0.1,
-//   1000,
-// );
-///////////////////
-const aspect = window.innerWidth / window.innerHeight;
-const d = 100;
-
-const camera = new THREE.OrthographicCamera(
-  -d * aspect,
-  d * aspect,
-  d,
-  -d,
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
   0.1,
   1000,
 );
-
-camera.position.set(100, 100, 100);
+camera.position.set(0, 0, 100);
 camera.lookAt(0, 0, 0);
 // camera.position.x = 0;
 // camera.position.y = 0;
 // camera.position.z = 100;
-const cameraHelper = new THREE.CameraHelper(camera);
-scene.add(cameraHelper);
+///////////////////
+// const aspect = window.innerWidth / window.innerHeight;
+// const d = 100;
+
+// const camera = new THREE.OrthographicCamera(
+//   -d * aspect,
+//   d * aspect,
+//   d,
+//   -d,
+//   0.1,
+//   1000,
+// );
+
+// const cameraHelper = new THREE.CameraHelper(camera);
+// scene.add(cameraHelper);
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -72,12 +72,10 @@ const loader = new SVGLoader();
 
 loader.load("../floor-plan.svg", (data) => {
   const paths = data.paths;
-
   const floorSVGroup = new THREE.Group();
 
   paths.forEach((path) => {
     const shapes = SVGLoader.createShapes(path);
-
     shapes.forEach((shape) => {
       const geometry = new THREE.ExtrudeGeometry(shape, {
         depth: 1,
@@ -92,21 +90,22 @@ loader.load("../floor-plan.svg", (data) => {
         side: THREE.DoubleSide,
       });
 
-      const mesh = new THREE.Mesh(geometry, material);
-      floorSVGroup.add(mesh);
-      //   floorSVGroup.rotation.x = -Math.PI / 2;
+      const floorSVGmesh = new THREE.Mesh(geometry, material);
+      floorSVGroup.add(floorSVGmesh);
     });
   });
 
   // Fix orientation (SVG is flipped in Y)
-  floorSVGroup.scale.z *= -1.5;
+  // floorSVGroup.scale.z *= -1.5;
 
   // Center it
   const box = new THREE.Box3().setFromObject(floorSVGroup);
   const center = new THREE.Vector3();
   box.getCenter(center);
-  floorSVGroup.position.sub(center);
-
+  // floorSVGroup.position.sub(center);
+  floorSVGroup.position.x = -center.x; // Adjust X position to sit on the plane
+  floorSVGroup.position.z = center.y; // Adjust Z position to sit on the plane
+  floorSVGroup.rotation.x = -Math.PI / 2; // Rotate to lie flat on the XZ plane
   scene.add(floorSVGroup);
 });
 
@@ -140,14 +139,13 @@ const extrudeSettings = {
 const controls = new OrbitControls(camera, renderer.domElement);
 
 // Optional settings (recommended)
-// controls.enableDamping = true; // smooth movement
+controls.enableDamping = true; // smooth movement
 // controls.dampingFactor = 0.05;
 // controls.screenSpacePanning = false;
 // controls.minDistance = 20;
 // controls.maxDistance = 200;
 // controls.maxPolarAngle = Math.PI / 2; // limit vertical rotation
-// // svgGroup.rotation.x = -Math.PI / 2;
-
+// svgGroup.rotation.x = -Math.PI / 2;
 
 // Plane
 
@@ -173,9 +171,9 @@ scene.add(plane);
 // Animate
 function animate() {
   requestAnimationFrame(animate);
-    // floorSVGroup.rotation.x = 0;
-    // floorSVGroup.rotation.y -= 0.05;
-    // floorSVGroup.rotation.z = 0;
+  // floorSVGroup.rotation.x = 0;
+  // floorSVGroup.rotation.y -= 0.05;
+  // floorSVGroup.rotation.z = 0;
   renderer.render(scene, camera);
 }
 
