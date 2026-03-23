@@ -4,17 +4,52 @@
 <head>
   <meta charset="UTF-8" />
   <title>Three SVG Block</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="/src/style.css" />
 </head>
 
 <body>
-  <canvas id="canvas"></canvas>
+  <header>
+    <nav>
+      <div id="company-name">
+        <b>🔺 PRAGATI DEVELOPERS</b>
+      </div>
+      <div className="controls">
+        <select id="buildingSelect">
+          <option value="">Select Building</option>
+        </select>
 
+        <select id="floorSelect"
+          disabled>
+          <option value="">Select Floor</option>
+        </select>
+
+        <select id="flatSelect"
+          disabled>
+          <option value="">Select Flat</option>
+        </select>
+      </div>
+      <!-- <button className="theme-toggle"
+        onClick={toggleTheme}>
+        <span className="theme-toggle-icon">
+          {theme === "dark" ? "☀️" : "🌙"}
+        </span>
+        {theme === "dark" ? "Light" : "Dark"}
+      </button> -->
+    </nav>
+  </header>
+  <main>
+    <canvas id="canvas"></canvas>
+  </main>
+  <!-- <aside>
+    <h2>Controls</h2>
+    <p>Use mouse to rotate, zoom, and pan the view.</p>
+  </aside> -->
+  <footer>
+    <p>&copy; 2023 Three SVG Block. All rights reserved.</p>
+  </footer>
   <script type="module"
     src="/src/main.js"></script>
 </body>

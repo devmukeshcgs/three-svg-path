@@ -1,0 +1,32 @@
+[
+    {
+        "building": "B01",
+        "floors": 16,
+        "location": "Kalyan",
+        "name": "Pragati Developers",
+        "id": "1TlfNpryzuEXTF42fVN1XINDm3vZtRweP",
+        "gSheetLink": "https://docs.google.com/spreadsheets/d/1TlfNpryzuEXTF42fVN1XINDm3vZtRweP/export?format=xlsx",
+        "floorplanPath": "./public/b1/floorplans/plan.svg",
+        "svgStructurePath": "M171.779 7.48723H183.182V25.0145H174.511V27.2647H183.301V64.0957H0.5V44.9104H12.4967V27.2647H1.21267V0.5H22.7117V3.57912H34.5896V0.5H56.92V3.57912H69.273V6.30296H78.7753V0.5H125.099V3.46069H150.161V7.48723H159.664V4.64497H171.779V7.48723Z"
+    },
+    {
+        "building": "B02",
+        "floors": 9,
+        "location": "Dombiwali",
+        "name": "Pragati Developers - Dombiwali",
+        "id": "1PJTnIYvsik57lGpM1Ewk1HGrJEOkgwJ9",
+        "gSheetLink": "https://docs.google.com/spreadsheets/d/1PJTnIYvsik57lGpM1Ewk1HGrJEOkgwJ9/export?format=xlsx",
+        "floorplanPath": "./public/b2/floorplans/plan.svg",
+        "svgStructurePath": "M330 25V269H0.5V188H51V113.5H3.5V0.5H94V13.5H144V0.5H238V13.5H290V25H330Z"
+    },
+    {
+        "building": "B03",
+        "floors": 6,
+        "location": "Kalyan-Khadak pada",
+        "name": "Pragati Developers - Kalyan",
+        "id": "1hyormQRhM0rLMuTQe0PRuSo_R8ZEqoBF",
+        "gSheetLink": "https://docs.google.com/spreadsheets/d/1hyormQRhM0rLMuTQe0PRuSo_R8ZEqoBF/export?format=xlsx",
+        "floorplanPath": "./public/b3/floorplans/plan.svg",
+        "svgStructurePath": "M293 136H123.5V165.5H316.5V280.5H131.5V269H0.5V188H51V113.5H3.5V0.5H94V13.5H144V0.5H238V13.5H293V136Z"
+    }
+]
