@@ -313,19 +313,20 @@ function createSVGGroupFromPath(svgPathString) {
 
     const mesh = new THREE.Mesh(
       geometry,
-      new THREE.ShaderMaterial({
-        vertexShader: `
-      void main() {
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
-      }
-    `,
-        fragmentShader: `
-      precision highp float;
-      void main() {
-        gl_FragColor = vec4(0.25,0.25,0.25,1.0);
-      }
-    `,
-      }),
+      material,
+      //   new THREE.ShaderMaterial({
+      //     vertexShader: `
+      //   void main() {
+      //     gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+      //   }
+      // `,
+      //     fragmentShader: `
+      //   precision highp float;
+      //   void main() {
+      //     gl_FragColor = vec4(0.25,0.25,0.25,1.0);
+      //   }
+      // `,
+      //   }),
     );
     geometry.center();
     group.add(mesh);
@@ -343,7 +344,7 @@ function createSVGGroupFromPath(svgPathString) {
         opacity: 1,
       }),
     );
-    scene.add(visibleEdges);
+    // scene.add(visibleEdges);
 
     // ----------------------
     // HIDDEN EDGES (DASHED)
@@ -360,9 +361,8 @@ function createSVGGroupFromPath(svgPathString) {
       }),
     );
     hiddenEdges.computeLineDistances();
-    scene.add(hiddenEdges);
+    // scene.add(hiddenEdges);
   });
-
 
   group.rotation.x = -Math.PI / 2;
   return group;
@@ -553,7 +553,7 @@ function lerp(a, b, t) {
 
 // scene.add(svgGroup);
 // scene.add(floorSVGroup);
-if (building) scene.add(building); // Only add if building exists (will be added on selection)
+// if (building) scene.add(building); // Only add if building exists (will be added on selection)
 
 // Initialize default building with 5 floors
 setTimeout(() => {
